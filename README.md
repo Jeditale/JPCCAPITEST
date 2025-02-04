@@ -41,8 +41,8 @@ java -jar target/sand-backend.jar
 ### Step 3: Verify the Application
 
 Once the server is running, you can verify the endpoints:
-- **API Endpoints:** [http://localhost:8080/api/](http://localhost:8080/swagger-ui)
-- STILL BROKEN (SWAGGER)
+- **API Endpoints:** [Swagger Link](http://localhost:8080/swagger-ui/index.html)
+- Swagger is up!
 
 ## Stopping the Application
 
