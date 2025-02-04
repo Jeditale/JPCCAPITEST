@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: ssouserdb
+    ports:
+      - "5432:5432"  # Expose PostgreSQL to host machine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist data across restarts
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the SQL file to run on startup
+    networks:
+      - app_network  # Docker network to connect services
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
