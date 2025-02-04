@@ -10,10 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @OpenAPIDefinition(
 		info = @Info(
-				title = "API Documentation",
-				version = "v1",
-				description = "Description of your API",
-				contact = @Contact(name = "Your Name", email = "youremail@example.com")
+				title = "SSO TEST",
+				version = "v2",
+				description = "SSO TEST APIS",
+				contact = @Contact(name = "JAY", email = "Jeditale@hotmail.com")
 		)
 )
 public class PccapitestApplication {

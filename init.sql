@@ -1,5 +1,5 @@
-CREATE ROLE postgres WITH LOGIN PASSWORD '1234';
-ALTER ROLE postgres CREATEDB;
+CREATE ROLE ssodev WITH LOGIN PASSWORD 'sso2022ok' CREATEDB;
+
 
 create table sso_user_test
 (

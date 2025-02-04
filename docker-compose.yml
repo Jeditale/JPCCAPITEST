@@ -5,16 +5,16 @@ services:
     image: postgres:13
     container_name: postgres_container
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: ssouserdb
+      POSTGRES_USER: ssodev
+      POSTGRES_PASSWORD: sso2022ok
+      POSTGRES_DB: ssotest
     ports:
-      - "5432:5432"  # Expose PostgreSQL to host machine
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data  # Persist data across restarts
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount the SQL file to run on startup
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Run initialization script
     networks:
-      - app_network  # Docker network to connect services
+      - app_network  # Connect services
 
 networks:
   app_network:
