@@ -52,16 +52,9 @@ To stop the services, use:
 docker-compose down
 ```
 
-## Additional Notes
-
-- Ensure that **MariaDB is running on port 3307**, as configured in `application.properties`.
-- The Eureka service should be accessible at **[http://localhost:8081](http://localhost:8081)**.
-
 ## Troubleshooting
-
 - If you encounter **port conflicts**, modify the `docker-compose.yml` file or change the application’s default ports in `application.properties`.
 - If Maven fails to start, ensure you have **Java 17+** installed and properly set up.
-
 ---
 
 **Enjoy coding! 🎬🍿**
