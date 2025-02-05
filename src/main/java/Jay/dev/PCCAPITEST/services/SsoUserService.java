@@ -1,10 +1,8 @@
 package Jay.dev.PCCAPITEST.services;
-
 import Jay.dev.PCCAPITEST.entities.SsoUserEntity;
 import Jay.dev.PCCAPITEST.repositories.SsoUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class SsoUserService {
             // Set the tokenId to some value, for example, generate or assign one
             if (ssoUserEntity.getTokenId() == null || ssoUserEntity.getTokenId().trim().isEmpty()) {
                 // Assign a default tokenId or generate one here
-                ssoUserEntity.setTokenId("");  // Replace with actual token logic
+                ssoUserEntity.setTokenId("");
             }
 
             // Set the request date if it's not set
@@ -35,7 +33,7 @@ public class SsoUserService {
 
             return ssoUserRepository.save(ssoUserEntity);
         } catch (Exception e) {
-            // Handle exceptions, e.g., database connection failure
+
             return null;
         }
     }

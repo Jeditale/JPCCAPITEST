@@ -1,12 +1,10 @@
 package Jay.dev.PCCAPITEST.controllers;
-
 import Jay.dev.PCCAPITEST.entities.SsoUserEntity;
 import Jay.dev.PCCAPITEST.services.SsoUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -44,14 +42,14 @@ public class SsoUserController {
             }
 
             // Success response
-            Map<String, Object> successResponse = new LinkedHashMap<>(); // Use LinkedHashMap to preserve order
+            Map<String, Object> successResponse = new LinkedHashMap<>();
             successResponse.put("responseCode", "I07000");
             successResponse.put("responseMessage", "ทำรายการเรียบร้อย");
 
             // Correctly mapping userId and tokenId in responseData
-            Map<String, String> responseData = new LinkedHashMap<>(); // Use LinkedHashMap to preserve order
-            responseData.put("userId", savedUser.getUserId());  // Correctly assign userId
-            responseData.put("tokenId", savedUser.getTokenId() != null ? savedUser.getTokenId() : " ");  // Correctly assign tokenId
+            Map<String, String> responseData = new LinkedHashMap<>();
+            responseData.put("userId", savedUser.getUserId());
+            responseData.put("tokenId", savedUser.getTokenId() != null ? savedUser.getTokenId() : " ");
 
             successResponse.put("responseData", responseData);
             return ResponseEntity.status(HttpStatus.OK).body(successResponse);

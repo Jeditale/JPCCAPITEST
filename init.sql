@@ -1,6 +1,5 @@
 CREATE ROLE ssodev WITH LOGIN PASSWORD 'sso2022ok' CREATEDB;
 
-
 create table sso_user_test
 (
     request_date          timestamp not null
