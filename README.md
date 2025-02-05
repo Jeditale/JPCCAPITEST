@@ -1,6 +1,6 @@
-# SAND Netflix Clone - Backend
+# SSOTEST
 
-This project is a backend service for a Netflix-like web application, built using **Spring Boot**, **Spring Data JPA**, **Feign Client**, and **Eureka** for microservices communication.
+This project is a SSOTEST Mini solo project
 
 ## Prerequisites
 
