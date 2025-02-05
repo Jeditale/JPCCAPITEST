@@ -15,13 +15,14 @@ Make sure you have the following installed before running the project:
 
 ### Step 1: Start Services with Docker
 
-The project uses **MariaDB** and **Eureka** as dependencies. To spin up the required services, run:
+The project uses **PostgresDB** To spin up the required services, run:
 
 ```sh
 docker-compose up -d
 ```
 
 This will start the necessary containers in detached mode.
+also make sure that the container is running in docker!
 
 ### Step 2: Run the Backend Server
 
