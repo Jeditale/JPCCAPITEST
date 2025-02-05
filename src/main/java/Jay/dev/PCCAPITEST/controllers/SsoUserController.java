@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,14 +44,14 @@ public class SsoUserController {
             }
 
             // Success response
-            Map<String, Object> successResponse = new HashMap<>();
+            Map<String, Object> successResponse = new LinkedHashMap<>(); // Use LinkedHashMap to preserve order
             successResponse.put("responseCode", "I07000");
             successResponse.put("responseMessage", "ทำรายการเรียบร้อย");
 
-            // Swapping the places of userId and tokenId in responseData
-            Map<String, String> responseData = new HashMap<>();
-            responseData.put("tokenId", savedUser.getUserId());  // Swap userId with tokenId
-            responseData.put("userId", savedUser.getTokenId() != null ? savedUser.getTokenId() : " ");  // Swap tokenId with userId
+            // Correctly mapping userId and tokenId in responseData
+            Map<String, String> responseData = new LinkedHashMap<>(); // Use LinkedHashMap to preserve order
+            responseData.put("userId", savedUser.getUserId());  // Correctly assign userId
+            responseData.put("tokenId", savedUser.getTokenId() != null ? savedUser.getTokenId() : " ");  // Correctly assign tokenId
 
             successResponse.put("responseData", responseData);
             return ResponseEntity.status(HttpStatus.OK).body(successResponse);
@@ -60,21 +61,20 @@ public class SsoUserController {
             return generateErrorResponse(ssoUserEntity, HttpStatus.INTERNAL_SERVER_ERROR, "E000001", "ไม่สามารถบันทึกข้อมูลลงฐานข้อมูลได้");
         }
     }
-
-    // Helper method to generate the expected error response
     private ResponseEntity<Object> generateErrorResponse(SsoUserEntity ssoUserEntity, HttpStatus status, String responseCode, String responseMessage) {
         Map<String, Object> errorResponse = new HashMap<>();
         errorResponse.put("responseCode", responseCode);
         errorResponse.put("responseMessage", responseMessage);
 
         Map<String, String> responseData = new HashMap<>();
-        responseData.put("tokenId", ssoUserEntity.getUserId() != null ? ssoUserEntity.getUserId() : " ");  // Swap userId with tokenId
-        responseData.put("userId", ssoUserEntity.getTokenId() != null ? ssoUserEntity.getTokenId() : " ");  // Swap tokenId with userId
+        responseData.put("userId", ssoUserEntity.getUserId() != null ? ssoUserEntity.getUserId() : " ");
+        responseData.put("tokenId", ssoUserEntity.getTokenId() != null ? ssoUserEntity.getTokenId() : " ");
 
         errorResponse.put("responseData", responseData);
         return ResponseEntity.status(status).body(errorResponse);
     }
-
-
-
 }
+
+
+
+
