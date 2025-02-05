@@ -1,11 +1,12 @@
 package Jay.dev.PCCAPITEST.controllers;
+
 import Jay.dev.PCCAPITEST.entities.SsoUserEntity;
 import Jay.dev.PCCAPITEST.services.SsoUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.HashMap;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class SsoUserController {
             successResponse.put("responseMessage", "ทำรายการเรียบร้อย");
 
             // Correctly mapping userId and tokenId in responseData
-            Map<String, String> responseData = new LinkedHashMap<>();
+            Map<String, String> responseData = new LinkedHashMap<>(); 
             responseData.put("userId", savedUser.getUserId());
             responseData.put("tokenId", savedUser.getTokenId() != null ? savedUser.getTokenId() : " ");
 
@@ -59,12 +60,14 @@ public class SsoUserController {
             return generateErrorResponse(ssoUserEntity, HttpStatus.INTERNAL_SERVER_ERROR, "E000001", "ไม่สามารถบันทึกข้อมูลลงฐานข้อมูลได้");
         }
     }
+
+    // Helper method to generate the expected error response
     private ResponseEntity<Object> generateErrorResponse(SsoUserEntity ssoUserEntity, HttpStatus status, String responseCode, String responseMessage) {
-        Map<String, Object> errorResponse = new HashMap<>();
+        Map<String, Object> errorResponse = new LinkedHashMap<>();
         errorResponse.put("responseCode", responseCode);
         errorResponse.put("responseMessage", responseMessage);
 
-        Map<String, String> responseData = new HashMap<>();
+        Map<String, String> responseData = new LinkedHashMap<>();
         responseData.put("userId", ssoUserEntity.getUserId() != null ? ssoUserEntity.getUserId() : " ");
         responseData.put("tokenId", ssoUserEntity.getTokenId() != null ? ssoUserEntity.getTokenId() : " ");
 
@@ -72,7 +75,3 @@ public class SsoUserController {
         return ResponseEntity.status(status).body(errorResponse);
     }
 }
-
-
-
-
